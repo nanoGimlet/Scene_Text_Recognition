@@ -206,3 +206,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# original
+created_data/
+stored_image/
