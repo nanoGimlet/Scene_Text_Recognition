@@ -41,9 +41,9 @@ evaluation datasets : benchmark evaluation datasets, consist of [IIIT](http://cv
 2. Add image files to test into `demo_image/`
 3. Run demo.py (add `--sensitive` option if you use case-sensitive model)
 ```
-CUDA_VISIBLE_DEVICES=0 python3 demo.py \
+CUDA_VISIBLE_DEVICES=0 python3 recognize.py \
 --Transformation TPS --FeatureExtraction ResNet --SequenceModeling BiLSTM --Prediction Attn \
---image_folder demo_image/ \
+--image_folder target_image/ \
 --saved_model TPS-ResNet-BiLSTM-Attn.pth
 ```
 

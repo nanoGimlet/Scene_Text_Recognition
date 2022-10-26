@@ -12,7 +12,7 @@ from model import Model
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
-def demo(opt):
+def recognize(opt):
     """ model configuration """
     if 'CTC' in opt.Prediction:
         converter = CTCLabelConverter(opt.character)
@@ -126,4 +126,4 @@ if __name__ == '__main__':
     cudnn.deterministic = True
     opt.num_gpu = torch.cuda.device_count()
 
-    demo(opt)
+    recognize(opt)
