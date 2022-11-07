@@ -16,7 +16,7 @@ def mapping():
 
     for i, data in enumerate(npXZ):
         if data[0] == INF:
-            char_nplist.append(npXZ[char_pre_point:i])
+            if i != 0: char_nplist.append(npXZ[char_pre_point:i])
             char_pre_point = i+1
     if npXZ[char_last_point-1, 0] != INF:
         char_nplist.append(npXZ[char_pre_point::])
