@@ -29,9 +29,10 @@ def mapping():
     trim_right = 0.0
     trim_upper = INF
     trim_lower = 0.0
-    img = Image.new("RGB", (720, 360), "White")
+    img = Image.new("RGB", (1440, 360), "White")
     draw = ImageDraw.Draw(img)
     cut_level = 20.0
+    mergin_level = 20.0
 
     for char_np in char_nplist:
         min_cx = INF
@@ -55,7 +56,7 @@ def mapping():
             trim_upper = min(trim_upper, char_data[1])
             trim_lower = max(trim_lower, char_data[1])
 
-        most_left_point = most_left_point + cut_level
+        most_left_point = most_left_point + mergin_level
         char_tuple = tuple(map(tuple, char_list))
         pre_x = 0.0
         pre_z = 0.0
