@@ -35,6 +35,7 @@ def mapping():
 
     for char_np in char_nplist:
         min_cx = INF
+        min_cz = INF
         max_cz = -INF
         char_list = char_np.tolist()
 
