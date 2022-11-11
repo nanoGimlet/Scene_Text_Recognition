@@ -20,17 +20,18 @@ class FileCreateHandler(FileSystemEventHandler):
         filename = os.path.basename(filepath)
         print(f"{filename} created")
         if '.txt' in filename:
-            if filename == 'finish.txt': mapping()
-        elif filename == 'sample_trim.png': recognize(model, opt, converter)
-    
+            if filename == 'finish.txt':
+                mapping()
+        elif filename == 'sample_trim.png':
+            recognize(model, opt, converter)
+
     def on_modified(self, event):
         filepath = event.src_path
         filename = os.path.basename(filepath)
-    
+
     def on_deleted(self, event):
         filepath = event.src_path
         filename = os.path.basename(filepath)
-
 
 
 if __name__ == '__main__':
@@ -74,7 +75,7 @@ if __name__ == '__main__':
                         help='the number of output channel of Feature extractor')
     parser.add_argument('--hidden_size', type=int, default=256,
                         help='the size of the LSTM hidden state')
-    
+
     model = None
     opt = parser.parse_args()
     converter = None
