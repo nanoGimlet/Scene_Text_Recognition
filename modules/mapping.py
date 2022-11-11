@@ -24,7 +24,7 @@ def mapping():
         char_nplist.append(npXZ[char_pre_point::])
 
     most_left_point = 20.0
-    most_lower_point = 240.0
+    center_point = 180.0
     trim_left = 0.0
     trim_right = 0.0
     trim_upper = INF
@@ -40,10 +40,11 @@ def mapping():
 
         for char_data in char_list:
             min_cx = min(min_cx, char_data[0])
+            min_cz = min(min_cz, char_data[1])
             max_cz = max(max_cz, char_data[1])
 
         adjust_x = most_left_point - min_cx
-        adjust_z = most_lower_point - max_cz
+        adjust_z = center_point - (max_cz + min_cz) / 2.0
 
         for char_data in char_list:
             char_data[0] = char_data[0] + adjust_x
