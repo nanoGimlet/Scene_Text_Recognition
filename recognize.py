@@ -31,7 +31,7 @@ def load_model(input_model, input_opt, input_converter):
     print('loading pretrained model from %s' % input_opt.saved_model)
     input_model.load_state_dict(torch.load(
         input_opt.saved_model, map_location=device))
-    
+
     return input_model, input_opt, input_converter
 
 
