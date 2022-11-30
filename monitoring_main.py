@@ -2,6 +2,7 @@ import os
 import string
 import time
 import argparse
+import datetime
 
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
@@ -18,10 +19,16 @@ class FileCreateHandler(FileSystemEventHandler):
     def on_created(self, event):
         filepath = event.src_path
         filename = os.path.basename(filepath)
-        print(f"{filename} created")
+        # print(f"{filename} created")
         if '.txt' in filename:
             if filename == 'finish.txt':
                 mapping()
+            else:
+                log = open(f'./log_demo_result.txt', 'a')
+                dashed_line = '-' * 80
+                log.write(f'{dashed_line}\n')
+                log.write(f'start_time: {datetime.datetime.now()}\n')
+                log.close()
         elif filename == 'sample_trim.png':
             recognize(model, opt, converter)
 

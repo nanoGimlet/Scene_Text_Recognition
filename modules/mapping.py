@@ -33,17 +33,25 @@ def mapping():
     draw = ImageDraw.Draw(img)
     cut_level = 20.0
     mergin_level = 20.0
+    cnt = 1
 
     for char_np in char_nplist:
         min_cx = INF
+        max_cx = -INF
         min_cz = INF
         max_cz = -INF
         char_list = char_np.tolist()
 
         for char_data in char_list:
             min_cx = min(min_cx, char_data[0])
+            max_cx = max(max_cx, char_data[0])
             min_cz = min(min_cz, char_data[1])
             max_cz = max(max_cz, char_data[1])
+        
+        log = open(f'./log_demo_result.txt', 'a')
+        log.write(f'{cnt}: x-axis= {abs(max_cx - min_cx)}, z-axis= {abs(max_cz - min_cz)}\n')
+        log.close()
+        cnt += 1
 
         adjust_x = most_left_point - min_cx
         adjust_z = center_point - (max_cz + min_cz) / 2.0
