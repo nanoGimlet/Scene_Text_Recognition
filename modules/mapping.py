@@ -50,7 +50,6 @@ def mapping():
         
         log = open(f'./log_demo_result.txt', 'a')
         log.write(f'{cnt}: x-axis= {abs(max_cx - min_cx)}, z-axis= {abs(max_cz - min_cz)}\n')
-        log.close()
         cnt += 1
 
         adjust_x = most_left_point - min_cx
@@ -89,6 +88,11 @@ def mapping():
     trim_img = img.crop((trim_left, trim_upper-img_margin,
                         trim_right+img_margin, trim_lower+img_margin))
     trim_img.save("./created_data/target_image/sample_trim.png")
-    trim_img.save(f"./stored_image/sample_trim_{trim_upper}.png")
+    trim_img.save(f"./stored_image/sample_trim_{trim_upper:0.4f}.png")
+    dashed_line = '-' * 80
+    print(f'{dashed_line}')
+    print(f'file_name: sample_trim_{trim_upper:0.4f}.png')
+    log.write(f'file_name: sample_trim_{trim_upper:0.4f}.png\n')
+    log.close()
     os.remove("./created_data/hand_data/input_coordinate.txt")
     os.remove("./created_data/hand_data/finish.txt")
