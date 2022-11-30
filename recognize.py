@@ -1,4 +1,5 @@
 import os
+import datetime
 
 import torch
 import torch.utils.data
@@ -78,10 +79,9 @@ def recognize(input_model, input_opt, input_converter):
 
             log = open(f'./log_demo_result.txt', 'a')
             dashed_line = '-' * 80
-            head = f'{"image_path":25s}\t{"predicted_labels":25s}\tconfidence score'
+            head = f'{"image_path":50s}\t{"predicted_labels":25s}'
 
             print(f'{dashed_line}\n{head}\n{dashed_line}')
-            log.write(f'{dashed_line}\n{head}\n{dashed_line}\n')
 
             preds_prob = F.softmax(preds, dim=2)
             preds_max_prob, _ = preds_prob.max(dim=2)
@@ -95,9 +95,10 @@ def recognize(input_model, input_opt, input_converter):
                 # calculate confidence score (= multiply of pred_max_prob)
                 confidence_score = pred_max_prob.cumprod(dim=0)[-1]
 
-                print(f'{img_name:25s}\t{pred:25s}\t{confidence_score:0.4f}')
-                log.write(
-                    f'{img_name:25s}\t{pred:25s}\t{confidence_score:0.4f}\n')
+                print(f'{img_name:50s}\t{pred:25s}')
+                log.write(f'predicted_lagels: {pred}\n')
+                log.write(f'confidence_score: {confidence_score:0.4f}\n')
+                log.write(f'finish_time: {datetime.datetime.now()}\n')
 
             log.close()
 
