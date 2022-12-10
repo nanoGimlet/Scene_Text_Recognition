@@ -31,7 +31,7 @@ def mapping():
     trim_lower = 0.0
     img = Image.new("RGB", (1440, 360), "White")
     draw = ImageDraw.Draw(img)
-    cut_level = 20.0
+    cut_level = 15.0
     mergin_level = 20.0
     cnt = 1
 
